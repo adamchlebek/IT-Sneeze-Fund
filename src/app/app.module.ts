@@ -9,6 +9,8 @@ import { StatsComponent } from './stats/stats.component';
 import { PieComponent } from './pie/pie.component';
 import { SpdComponent } from './spd/spd.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { SpdComponent } from './spd/spd.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
