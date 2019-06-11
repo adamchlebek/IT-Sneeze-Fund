@@ -32,3 +32,11 @@ footer{
   font-style: italic;
   padding: 50px;
 }
+
+.small{
+  font-size: small;
+  text-align: center;
+  color: gray;
+  font-style: italic;
+  padding: 50px;
+}
