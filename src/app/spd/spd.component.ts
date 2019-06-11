@@ -9,16 +9,30 @@ import { User } from '../user';
   templateUrl: './spd.component.html',
   styleUrls: ['./spd.component.css']
 })
+
 export class SpdComponent implements OnInit {
   sneezes: Sneeze[];
   users: User[];
+
+  chartOptions = {
+    responsive: true
+  };
+
+  chartData = [
+    { data: [], label: 'Account A' }
+  ];
+
+  chartLabels = [];
 
   constructor(private userApiServce: UserAPIService) { }
 
   ngOnInit() {
     this.userApiServce.getSneezes().subscribe((data) => {
       this.sneezes = data;
-      console.log(data);
+
+      data.forEach((sneeze) => {
+
+      });
     });
   }
 
