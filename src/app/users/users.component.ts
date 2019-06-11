@@ -51,6 +51,7 @@ export class UsersComponent implements OnInit {
 
   decline(): void {
     this.modalRef.hide();
+    this.hide = true;
   }
 
   ngOnInit() {

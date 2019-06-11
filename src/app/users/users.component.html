@@ -21,7 +21,8 @@
       <br>
       <button [hidden]="!hide" type="button" class="btn btn-default padding" (click)="confirm()">✔️</button>
       <button [hidden]="!hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
-      <button [hidden]="hide" type="button" class="btn btn-primary padding" (click)="checkCode()">📇</button>
+      <button [hidden]="hide" type="button" class="btn btn-default padding" (click)="checkCode()">📇</button>
+      <button [hidden]="hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
     </div>
   </ng-template>
 </div>
