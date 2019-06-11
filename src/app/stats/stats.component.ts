@@ -10,13 +10,24 @@ import { User } from '../user';
 export class StatsComponent implements OnInit {
   users: User[];
 
+  totalCost: number;
+  totalSneezes: number = 0;
+
   constructor(private userApiServce: UserAPIService) { }
 
   ngOnInit() {
     this.userApiServce.getUsers().subscribe((data) => {
       this.users = data;
       console.log(data);
+
+      this.users.forEach((user)=>{
+        this.totalSneezes += user.count;
+      });
+
+      this.totalCost = this.totalSneezes * 0.25;
     });
+
+
   }
 
   updateTable(){

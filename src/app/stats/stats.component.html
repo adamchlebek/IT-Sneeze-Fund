@@ -18,5 +18,12 @@
             <td>{{ user.count * 0.25 | currency: 'USD' }} </td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <th></th>
+            <th>{{ totalSneezes }}</th>
+            <th>{{ totalCost | currency: 'USD' }}</th>
+          </tr>
+        </tfoot>
       </table>
 </div>
