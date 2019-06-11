@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { Observable } from 'rxjs';
 import { Sneeze } from './sneeze';
+import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -31,11 +32,18 @@ export class UserAPIService {
   }
 
   public addSneeze(user: User){
-    //this.stats.updateTable();
-    // TODO: Add Post Method to record new sneeze count!
-    this.httpClient.get('https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name);
     user.count += 1;
 
-    return user;
+    let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name;
+
+    return this.httpClient.post(url, '').subscribe((val) => {
+      console.log("Success!", val);
+    },
+    response => {
+      console.log("Error!", response);
+    },
+    () => {
+      console.log("Complete!");
+    });
   }
 }
