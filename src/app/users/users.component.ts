@@ -18,7 +18,9 @@ export class UsersComponent implements OnInit {
       this.users = data;
       console.log(data);
     });
-
   }
 
+  addSneeze(user: User) {
+    this.userApiServce.addSneeze(user);
+  }
 }

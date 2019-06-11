@@ -2,12 +2,14 @@
     <h2 class="card-title">All Users</h2>
     <hr>
     <!-- This is where we do a for loop to get each of our person components -->
-    <app-person></app-person>
-    <app-person></app-person>
-    <app-person></app-person>
-
-    
-    <li *ngFor="let person of users">
-      <b> {{ person }} </b>           
-   </li>
+    <div *ngFor="let person of users">
+      <div class="card" style="width: 18rem; float: left; margin: 15px; text-align: center;">
+        <div class="card-body">
+          <h5 class="card-title">{{ person.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Current Count: {{ person.count }}</h6>
+          <button type="button" (click)="addSneeze(person)" class="btn btn-default btn-circle btn-xl">🤧
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
