@@ -2,6 +2,12 @@
     <div class="card-body">
         <h4 class="card-title">Sneezes Per Person</h4>
         <hr>
-
+        <div style="display: block">
+          <canvas baseChart
+                  [data]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [chartType]="pieChartType"
+                  [colors]="pieColors"></canvas>
+        </div>
     </div>
 </div>

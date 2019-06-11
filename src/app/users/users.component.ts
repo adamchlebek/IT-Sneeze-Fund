@@ -1,3 +1,4 @@
+import { StatsComponent } from './../stats/stats.component';
 import { UserAPIService } from './../user-api.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,6 +9,7 @@ import { User } from './../user';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+
 export class UsersComponent implements OnInit {
   users: User[];
 
@@ -16,11 +18,17 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.userApiServce.getUsers().subscribe((data) => {
       this.users = data;
-      console.log(data);
     });
   }
 
   addSneeze(user: User) {
+    //this.statsComponent.updateTable();
+    //You have added a sneeze!
     this.userApiServce.addSneeze(user);
+  }
+
+  delSneeze(user: User){
+    //You have removed a sneeze!
+    this.userApiServce.delSneeze(user);
   }
 }

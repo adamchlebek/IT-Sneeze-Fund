@@ -2,4 +2,20 @@
     <h3 class="card-title">Statistics</h3>
     <hr>
     <!-- This is where we do a for loop to get each of our person components -->
-  </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Sneeze Count</th>
+          <th scope="col">Total Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <th>{{ user.name }}</th>
+            <td>{{ user.count }}</td>
+            <td>${{ user.count * 0.25 }} </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
