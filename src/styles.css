@@ -25,3 +25,10 @@
   line-height: 1.42857;
   margin: 10px;
 }
+
+footer{
+  text-align: center;
+  color: gray;
+  font-style: italic;
+  padding: 50px;
+}
