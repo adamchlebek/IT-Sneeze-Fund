@@ -13,7 +13,21 @@
       <tr *ngFor="let sneeze of sneezes">
         <th>{{ sneeze.name }}</th>
         <td>{{ sneeze.date | date:'EEEE, dd MMMM hh:mm a' }}</td>
+        <td><button type="button" (click)="openModal(template, sneeze)" class="btn btn-light" style="float: right;">🗑️</button></td>
       </tr>
     </tbody>
   </table>
+
+  <ng-template #template>
+      <div class="modal-body text-center" id="confirmation">
+        <p>{{ message }}</p>
+        <p [hidden]="hide">Please Enter Code...</p>
+        <input [hidden]="hide" id="code">
+        <br>
+        <button [hidden]="!hide" type="button" class="btn btn-light padding" (click)="confirm()">✔️</button>
+        <button [hidden]="!hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
+        <button [hidden]="hide" type="button" class="btn btn-light padding" (click)="checkCode()">📇</button>
+        <button [hidden]="hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
+      </div>
+    </ng-template>
 </div>

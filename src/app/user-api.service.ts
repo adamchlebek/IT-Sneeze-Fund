@@ -46,4 +46,19 @@ export class UserAPIService {
       console.log("Complete!");
     });
   }
+
+  delSneeze(sneeze: Sneeze){
+    let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/DelSneeze/' + sneeze.date + '/' + sneeze.name;
+
+    return this.httpClient.post(url, '').subscribe((val) => {
+      console.log("Success!", val);
+    },
+    response => {
+      console.log("Error!", response);
+    },
+    () => {
+      console.log("Complete!");
+    });
+  }
+
 }

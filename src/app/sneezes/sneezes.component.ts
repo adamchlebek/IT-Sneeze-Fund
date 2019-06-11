@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Sneeze } from '../sneeze';
 import { UserAPIService } from '../user-api.service';
 import { User } from '../user';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-sneezes',
@@ -11,8 +12,19 @@ import { User } from '../user';
 export class SneezesComponent implements OnInit {
   sneezes: Sneeze[];
   users: User[];
+  modalRef: BsModalRef;
+  message: string;
+  sneeze: Sneeze;
+  hide: boolean;
 
-  constructor(private userApiServce: UserAPIService) { }
+  config = {
+    backdrop: true,
+    ignoreBackdropClick: true,
+    class: 'modal-sm'
+  };
+
+
+  constructor(private userApiServce: UserAPIService, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.userApiServce.getSneezes().subscribe((data) => {
@@ -22,5 +34,41 @@ export class SneezesComponent implements OnInit {
     this.userApiServce.getUsers().subscribe((data) => {
       this.users = data;
     });
+
+    this.hide = true;
+  }
+
+  openModal(template: TemplateRef<any>, sneeze: Sneeze) {
+    this.sneeze = sneeze;
+    this.message = 'Are you sure you want to delete this sneeze?';
+    this.modalRef = this.modalService.show(template, this.config);
+  }
+
+  confirm(): void {
+    this.hide = false;
+    //this.addSneeze();
+  }
+
+  checkCode(){
+    document.getElementById("confirmation").classList.remove("shake");
+
+    if((<HTMLInputElement>document.getElementById("code")).value == "nosneeze"){
+      this.delSneeze();
+    }else{
+      document.getElementById("confirmation").classList.add("shake");
+      document.getElementById("code").classList.add("error");
+    }
+  }
+
+  decline(): void {
+    this.modalRef.hide();
+    this.hide = true;
+  }
+
+  delSneeze() {
+    this.modalRef.hide();
+    this.hide = true;
+    //You have added a sneeze!
+    this.userApiServce.delSneeze(this.sneeze);
   }
 }
