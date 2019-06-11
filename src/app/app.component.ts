@@ -15,5 +15,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.userAPI.apiUsers();
+    this.userAPI.apiSneezes();
   }
 }

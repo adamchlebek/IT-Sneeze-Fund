@@ -3,7 +3,11 @@
         <h4 class="card-title">Sneezes Per Day</h4>
         <hr>
 
-
+        <ul *ngFor="let sneeze of sneezes">
+          <li>
+            {{ sneeze.name }} at {{ sneeze.date }}
+          </li>
+        </ul>
 
     </div>
 </div>

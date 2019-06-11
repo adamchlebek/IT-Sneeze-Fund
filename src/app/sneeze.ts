@@ -1,4 +1,4 @@
 export class Sneeze {
-  time: Date;
+  date: Date;
   name: string;
 }
