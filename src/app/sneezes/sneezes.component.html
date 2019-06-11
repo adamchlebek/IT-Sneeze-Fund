@@ -1,0 +1,18 @@
+<div class="card centerCard" style="width: 90%">
+  <h4 class="card-title">Sneeze History</h4>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sneeze of sneezes">
+        <th>{{ sneeze.name }}</th>
+        <td>{{ sneeze.date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

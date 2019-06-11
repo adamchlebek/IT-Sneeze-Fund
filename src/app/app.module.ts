@@ -1,3 +1,4 @@
+import { SneezesComponent } from './sneezes/sneezes.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,7 +20,8 @@ import { ChartsModule } from 'ng2-charts';
     PersonComponent,
     StatsComponent,
     PieComponent,
-    SpdComponent
+    SpdComponent,
+    SneezesComponent
   ],
   imports: [
     BrowserModule,
