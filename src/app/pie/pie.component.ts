@@ -11,10 +11,10 @@ import { User } from '../user';
 export class PieComponent implements OnInit {
   users: User[];
 
-  public pieChartLabels = [];
-  public pieChartData = [];
-  public pieChartType = 'pie';
-  public pieColors =[{
+  pieChartLabels = [];
+  pieChartData = [];
+  pieChartType = 'pie';
+  pieColors =[{
     backgroundColor: [
       'rgba(12, 173, 30, 1)',
       'rgba(239, 178, 247, 1)',

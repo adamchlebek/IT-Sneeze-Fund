@@ -18,7 +18,6 @@ export class StatsComponent implements OnInit {
   ngOnInit() {
     this.userApiServce.getUsers().subscribe((data) => {
       this.users = data;
-      console.log(data);
 
       this.users.forEach((user)=>{
         this.totalSneezes += user.count;
@@ -26,12 +25,5 @@ export class StatsComponent implements OnInit {
 
       this.totalCost = this.totalSneezes * 0.25;
     });
-
-
   }
-
-  updateTable(){
-
-  }
-
 }

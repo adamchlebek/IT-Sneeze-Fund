@@ -10,28 +10,28 @@ import { stringify } from '@angular/compiler/src/util';
   providedIn: 'root'
 })
 export class UserAPIService {
-  public users: Observable<User[]>;
-  public sneezes: Observable<Sneeze[]>;
+  users: Observable<User[]>;
+  sneezes: Observable<Sneeze[]>;
 
   constructor(private httpClient: HttpClient) { }
 
-  public apiUsers(){
+  apiUsers(){
     this.users = this.httpClient.get<User[]>('https://sneezewebapi.azurewebsites.net/api/users');
   }
 
-  public apiSneezes(){
+  apiSneezes(){
     this.sneezes = this.httpClient.get<Sneeze[]>('https://sneezewebapi.azurewebsites.net/api/sneezes');
   }
 
-  public getUsers(){
+  getUsers(){
     return this.users;
   }
 
-  public getSneezes(){
+  getSneezes(){
     return this.sneezes;
   }
 
-  public addSneeze(user: User){
+  addSneeze(user: User){
     user.count += 1;
 
     let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name;
