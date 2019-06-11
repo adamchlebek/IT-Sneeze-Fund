@@ -17,18 +17,36 @@ export class UsersComponent implements OnInit {
   modalRef: BsModalRef;
   message: string;
   user: User;
+  hide: boolean;
+
+  config = {
+    backdrop: true,
+    ignoreBackdropClick: true,
+    class: 'modal-sm'
+  };
 
   constructor(private userApiServce: UserAPIService, private modalService: BsModalService) { }
 
   openModal(template: TemplateRef<any>, user: User) {
     this.user = user;
     this.message = 'Are you sure ' + user.name + ' just sneezed?';
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.modalRef = this.modalService.show(template, this.config);
   }
 
   confirm(): void {
-    this.addSneeze();
-    this.modalRef.hide();
+    this.hide = false;
+    //this.addSneeze();
+  }
+
+  checkCode(){
+    document.getElementById("confirmation").classList.remove("shake");
+
+    if((<HTMLInputElement>document.getElementById("code")).value == "sneeze"){
+      this.addSneeze();
+    }else{
+      document.getElementById("confirmation").classList.add("shake");
+      document.getElementById("code").classList.add("error");
+    }
   }
 
   decline(): void {
@@ -36,13 +54,16 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.hide = true;
     this.userApiServce.getUsers().subscribe((data) => {
       this.users = data;
     });
   }
 
   addSneeze() {
+    this.modalRef.hide();
+    this.hide = true;
     //You have added a sneeze!
-    //this.userApiServce.addSneeze(this.user);
+    this.userApiServce.addSneeze(this.user);
   }
 }

@@ -14,13 +14,14 @@
   </div>
 
   <ng-template #template>
-    <div class="modal-body text-center">
+    <div class="modal-body text-center" id="confirmation">
       <p>{{ message }}</p>
-
-      <button type="button" class="btn btn-default padding" (click)="confirm()">✔️</button>
-
-      <button type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
-
+      <p [hidden]="hide">Please Enter Code...</p>
+      <input [hidden]="hide" id="code">
+      <br>
+      <button [hidden]="!hide" type="button" class="btn btn-default padding" (click)="confirm()">✔️</button>
+      <button [hidden]="!hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
+      <button [hidden]="hide" type="button" class="btn btn-primary padding" (click)="checkCode()">📇</button>
     </div>
   </ng-template>
 </div>
