@@ -33,14 +33,8 @@ export class UserAPIService {
   public addSneeze(user: User){
     //this.stats.updateTable();
     // TODO: Add Post Method to record new sneeze count!
+    this.httpClient.get('https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name);
     user.count += 1;
-
-    return user;
-  }
-
-  public delSneeze(user: User){
-    // TODO: Add Post Method to record new sneeze count!
-    user.count -= 1;
 
     return user;
   }
