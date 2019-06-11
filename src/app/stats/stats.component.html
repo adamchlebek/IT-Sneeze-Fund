@@ -14,7 +14,7 @@
           <tr *ngFor="let user of users">
             <th>{{ user.name }}</th>
             <td>{{ user.count }}</td>
-            <td>${{ user.count * 0.25 }} </td>
+            <td>{{ user.count * 0.25 | currency: 'USD' }} </td>
           </tr>
         </tbody>
       </table>
