@@ -10,6 +10,7 @@ export class UserAPIService {
   constructor(private httpClient: HttpClient) { }
 
   public getUsers(){
+    //return null;
     return this.httpClient.get<User[]>('https://sneezewebapi.azurewebsites.net/api/users');
   }
 }
