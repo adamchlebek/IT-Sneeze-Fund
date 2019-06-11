@@ -8,7 +8,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ person.name }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Current Count: {{ person.count }}</h6>
-        <button type="button" (click)="openModal(template, person)" class="btn btn-default btn-circle btn-xl">🤧</button>
+        <button type="button" (click)="openModal(template, person)" class="btn btn-light btn-circle btn-xl">🤧</button>
       </div>
     </div>
   </div>
@@ -19,9 +19,9 @@
       <p [hidden]="hide">Please Enter Code...</p>
       <input [hidden]="hide" id="code">
       <br>
-      <button [hidden]="!hide" type="button" class="btn btn-default padding" (click)="confirm()">✔️</button>
+      <button [hidden]="!hide" type="button" class="btn btn-light padding" (click)="confirm()">✔️</button>
       <button [hidden]="!hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
-      <button [hidden]="hide" type="button" class="btn btn-default padding" (click)="checkCode()">📇</button>
+      <button [hidden]="hide" type="button" class="btn btn-light padding" (click)="checkCode()">📇</button>
       <button [hidden]="hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
     </div>
   </ng-template>
