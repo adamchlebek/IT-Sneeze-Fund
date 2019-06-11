@@ -23,6 +23,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+@angular/animations
+MIT
+
 @angular/common
 MIT
 
@@ -153,6 +156,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ng2-charts
 ISC
+
+ngx-bootstrap/accordion
+
+ngx-bootstrap/collapse
 
 ngx-bootstrap/component-loader
 
