@@ -9,6 +9,7 @@
           <th scope="col">Name</th>
           <th scope="col">Sneeze Count</th>
           <th scope="col">Total Cost</th>
+          <th scope="col">Percentage</th>
         </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
             <th>{{ user.name }}</th>
             <td>{{ user.count }}</td>
             <td>{{ user.count * 0.25 | currency: 'USD' }} </td>
+            <td>{{ (user.count / totalSneezes) | percent }}</td>
           </tr>
         </tbody>
         <tfoot>
@@ -23,6 +25,7 @@
             <th></th>
             <th>{{ totalSneezes }}</th>
             <th>{{ totalCost | currency: 'USD' }}</th>
+            <th></th>
           </tr>
         </tfoot>
       </table>
