@@ -76,11 +76,12 @@ export class UsersComponent implements OnInit {
     this.modalRef.hide();
     this.hide = true;
     //You have added a sneeze!
+    this.createSneeze(user);
     this.changeService.updateUser(user);
     this.userApiServce.addSneeze(this.user);
   }
 
-  testSneeze(user: User){
+  createSneeze(user: User){
     var thisSneeze: Sneeze = new Sneeze();
 
     thisSneeze.name = user.name;
