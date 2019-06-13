@@ -1,3 +1,4 @@
+import { ChangeService } from './../change.service';
 import { Component, OnInit } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { UserAPIService } from '../user-api.service';
@@ -24,7 +25,21 @@ export class PieComponent implements OnInit {
     ]
   }];
 
-  constructor(private userApiServce: UserAPIService) { }
+  constructor(private userApiServce: UserAPIService,
+    private changeService: ChangeService) {
+    this.changeService.getUser().subscribe(user => {
+      let index = this.users.map(function(x) {return x.name}).indexOf(user.name);
+      this.users[index].count += 1;
+
+      this.pieChartLabels = [];
+      this.pieChartData = [];
+
+      this.users.map((user) => {
+        this.pieChartLabels.push(user.name);
+        this.pieChartData.push(user.count);
+      });
+    });
+  }
 
   ngOnInit() {
     this.userApiServce.getUsers().subscribe((data) => {
@@ -36,7 +51,5 @@ export class PieComponent implements OnInit {
       });
 
     });
-
-
   }
 }

@@ -1,6 +1,7 @@
 <div class="card centerCard" style="width: 90%">
   <div class="card-body">
     <h3 class="card-title">Statistics</h3>
+    <h2 *ngIf="inUser">{{ inUser.name }}</h2>
     <hr>
     <!-- This is where we do a for loop to get each of our person components -->
     <table class="table table-striped">

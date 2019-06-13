@@ -1,8 +1,9 @@
+import { ChangeService } from './../change.service';
 import { PieComponent } from './../pie/pie.component';
 import { StatsComponent } from './../stats/stats.component';
 import { UserAPIService } from './../user-api.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, TemplateRef, HostListener } from '@angular/core';
 
 import { User } from './../user';
 
@@ -18,6 +19,11 @@ export class UsersComponent implements OnInit {
   message: string;
   user: User;
   hide: boolean;
+  counter: number = 0;
+
+  curUser: User;
+
+  @Output() valueChange = new EventEmitter<User>();
 
   config = {
     backdrop: true,
@@ -25,7 +31,10 @@ export class UsersComponent implements OnInit {
     class: 'modal-sm'
   };
 
-  constructor(private userApiServce: UserAPIService, private modalService: BsModalService) { }
+  constructor(private userApiServce: UserAPIService,
+    private modalService: BsModalService,
+    private changeService: ChangeService) { }
+
 
   openModal(template: TemplateRef<any>, user: User) {
     this.user = user;
@@ -38,11 +47,11 @@ export class UsersComponent implements OnInit {
     //this.addSneeze();
   }
 
-  checkCode(){
+  checkCode(user: User){
     document.getElementById("confirmation").classList.remove("shake");
 
     if((<HTMLInputElement>document.getElementById("code")).value == "sneeze"){
-      this.addSneeze();
+      this.addSneeze(user);
     }else{
       document.getElementById("confirmation").classList.add("shake");
       document.getElementById("code").classList.add("error");
@@ -61,10 +70,12 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  addSneeze() {
+  addSneeze(user: User) {
+    //this.changeService.toggle();
     this.modalRef.hide();
     this.hide = true;
     //You have added a sneeze!
+    this.changeService.updateUser(user);
     this.userApiServce.addSneeze(this.user);
   }
 }
