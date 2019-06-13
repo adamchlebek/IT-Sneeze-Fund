@@ -15,6 +15,10 @@ import { ChartsModule } from 'ng2-charts';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReleaseNotesComponent } from './release-notes/release-notes.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StatsComponent,
     PieComponent,
     SpdComponent,
-    SneezesComponent
+    SneezesComponent,
+    ReleaseNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChartsModule,
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

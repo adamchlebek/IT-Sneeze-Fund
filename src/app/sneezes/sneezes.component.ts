@@ -16,13 +16,13 @@ export class SneezesComponent implements OnInit {
   message: string;
   sneeze: Sneeze;
   hide: boolean;
+  show: boolean;
 
   config = {
     backdrop: true,
     ignoreBackdropClick: true,
     class: 'modal-sm'
   };
-
 
   constructor(private userApiServce: UserAPIService, private modalService: BsModalService) { }
 
@@ -36,6 +36,7 @@ export class SneezesComponent implements OnInit {
     });
 
     this.hide = true;
+    this.show = true;
   }
 
   openModal(template: TemplateRef<any>, sneeze: Sneeze) {
@@ -73,5 +74,9 @@ export class SneezesComponent implements OnInit {
 
     var index = this.sneezes.indexOf(this.sneeze);
     this.sneezes.splice(index, 1);
+  }
+
+  toggle(){
+    this.show = !this.show;
   }
 }

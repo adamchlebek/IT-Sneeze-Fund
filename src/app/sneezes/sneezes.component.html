@@ -1,22 +1,25 @@
 <div class="card centerCard" style="width: 90%">
-  <h4 class="card-title">Sneeze History</h4>
-  <hr>
+  <div>
+    <h4 class="card-title">Sneeze History</h4>
+    <button (click)="toggle()" class="btn btn-outline-primary" style="width: 150px;">{{ show ? 'Hide History' : 'Show History' }}</button>
+    <hr>
+  </div>
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Date</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let sneeze of sneezes">
-        <th>{{ sneeze.name }}</th>
-        <td>{{ sneeze.date | date:'EEEE, dd MMMM hh:mm a' }}</td>
-        <td><button type="button" (click)="openModal(template, sneeze)" class="btn btn-light" style="float: right;">🗑️</button></td>
+  <table class="table table-striped" *ngIf="show">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
       </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sneeze of sneezes">
+          <th>{{ sneeze.name }}</th>
+          <td>{{ sneeze.date | date:'EEEE, dd MMMM hh:mm a' }}</td>
+          <td><button type="button" (click)="openModal(template, sneeze)" class="btn btn-light" style="float: right;">🗑️</button></td>
+        </tr>
+      </tbody>
+    </table>
 
   <ng-template #template>
       <div class="modal-body text-center" id="confirmation">
