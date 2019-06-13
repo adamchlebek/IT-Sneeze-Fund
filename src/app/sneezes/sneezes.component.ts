@@ -1,3 +1,4 @@
+import { ChangeService } from './../change.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Sneeze } from '../sneeze';
 import { UserAPIService } from '../user-api.service';
@@ -24,7 +25,11 @@ export class SneezesComponent implements OnInit {
     class: 'modal-sm'
   };
 
-  constructor(private userApiServce: UserAPIService, private modalService: BsModalService) { }
+  constructor(private userApiServce: UserAPIService, private modalService: BsModalService, private changeService: ChangeService) {
+    this.changeService.getSneeze().subscribe(sneeze => {
+      this.sneezes.push(sneeze);
+    });
+  }
 
   ngOnInit() {
     this.userApiServce.getSneezes().subscribe((data) => {

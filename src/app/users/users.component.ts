@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Component, OnInit, Output, EventEmitter, TemplateRef, HostListener } from '@angular/core';
 
 import { User } from './../user';
+import { Sneeze } from '../sneeze';
 
 @Component({
   selector: 'app-users',
@@ -77,5 +78,14 @@ export class UsersComponent implements OnInit {
     //You have added a sneeze!
     this.changeService.updateUser(user);
     this.userApiServce.addSneeze(this.user);
+  }
+
+  testSneeze(user: User){
+    var thisSneeze: Sneeze = new Sneeze();
+
+    thisSneeze.name = user.name;
+    thisSneeze.date = new Date();
+
+    this.changeService.addSneeze(thisSneeze);
   }
 }
