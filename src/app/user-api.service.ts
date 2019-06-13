@@ -48,9 +48,9 @@ export class UserAPIService {
   }
 
   delSneeze(sneeze: Sneeze){
-    let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/DelSneeze/' + sneeze.date + '/' + sneeze.name;
+    let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/DelSneeze/?date=' + sneeze.date + '&name=' + sneeze.name;
 
-    return this.httpClient.post(url, '').subscribe((val) => {
+    return this.httpClient.get(url).subscribe((val) => {
       console.log("Success!", val);
     },
     response => {

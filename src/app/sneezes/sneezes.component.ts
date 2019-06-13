@@ -70,5 +70,8 @@ export class SneezesComponent implements OnInit {
     this.hide = true;
     //You have added a sneeze!
     this.userApiServce.delSneeze(this.sneeze);
+
+    var index = this.sneezes.indexOf(this.sneeze);
+    this.sneezes.splice(index, 1);
   }
 }
