@@ -16,6 +16,7 @@ export class StatsComponent implements OnInit {
   users: User[];
 
   totalCost: number;
+  moneyPerPerson: number;
   totalSneezes: number = 0;
 
   count: number;
@@ -28,12 +29,14 @@ export class StatsComponent implements OnInit {
 
         this.totalSneezes = 0;
         this.totalCost = 0;
+        this.moneyPerPerson = 0;
 
         this.users.forEach((user)=>{
           this.totalSneezes += user.count;
         });
 
         this.totalCost = this.totalSneezes * 0.25;
+        this.moneyPerPerson = this.totalCost/this.users.length;
       });
     }
 
@@ -50,6 +53,7 @@ export class StatsComponent implements OnInit {
       });
 
       this.totalCost = this.totalSneezes * 0.25;
+      this.moneyPerPerson = this.totalCost/this.users.length;
     });
   }
 }

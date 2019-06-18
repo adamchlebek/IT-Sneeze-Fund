@@ -19,6 +19,7 @@ export class PieComponent implements OnInit {
     backgroundColor: [
       'rgba(12, 173, 30, 1)',
       'rgba(239, 178, 247, 1)',
+      'rgba(0, 0, 204, 1)',
       'rgba(15, 50, 9, 1)',
       'rgba(147, 147, 147, 1)',
       'rgba(85, 206, 237, 1)'
