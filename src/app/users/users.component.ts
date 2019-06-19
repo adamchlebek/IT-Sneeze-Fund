@@ -81,6 +81,12 @@ export class UsersComponent implements OnInit {
     this.userApiServce.addSneeze(this.user);
   }
 
+  testSneeze(user: User){
+    this.createSneeze(user);
+    this.changeService.updateUser(user);
+    this.userApiServce.testSneeze(this.user);
+  }
+
   createSneeze(user: User){
     var thisSneeze: Sneeze = new Sneeze();
 
