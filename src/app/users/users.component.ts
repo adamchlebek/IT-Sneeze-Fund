@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
   user: User;
   hide: boolean;
   counter: number = 0;
+  testing: boolean = false;
 
   curUser: User;
 

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Sneeze } from '../sneeze';
 import { User } from '../user';
+import { ChangeService } from '../change.service';
 
 @Component({
   selector: 'app-spd',
@@ -30,7 +31,11 @@ export class SpdComponent implements OnInit {
 
   chartLabels = ['Saturday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sunday'];
 
-  constructor(private userApiServce: UserAPIService) { }
+  constructor(private userApiServce: UserAPIService, private changeService: ChangeService) {
+    this.changeService.getSneeze().subscribe(sneeze => {
+      this.sneezes.unshift(sneeze);
+    });
+  }
 
   ngOnInit() {
     this.userApiServce.getSneezes().subscribe((data) => {

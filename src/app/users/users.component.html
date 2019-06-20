@@ -12,7 +12,7 @@
         <img src="{{person.image}}" class="card-img" />
         <br>
         <button type="button" (click)="openModal(template, person)" class="btn btn-light btn-circle btn-xl">🤧</button>
-        <!-- <button type="button" (click)="testSneeze(person)" class="btn btn-light btn-circle btn-xl">Test</button> -->
+        <button type="button" *ngIf="testing" (click)="testSneeze(person)" class="btn btn-light btn-circle btn-xl">Test</button>
       </div>
     </div>
   </div>
