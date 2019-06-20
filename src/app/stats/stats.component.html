@@ -4,13 +4,14 @@
     <h2 *ngIf="inUser">{{ inUser.name }}</h2>
     <hr>
     <!-- This is where we do a for loop to get each of our person components -->
-    <table class="table table-striped">
+    <table class="table table-striped centered">
         <thead>
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Sneeze Count</th>
           <th scope="col">Total Cost</th>
           <th scope="col">Percentage</th>
+          <th scope="col">Avg Sneezes Per Work Day<br><button (click)="getUsers()" class="btn btn-light btn-circle">🔄</button></th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
             <td>{{ user.count }}</td>
             <td>{{ user.count * 0.25 | currency: 'USD' }} </td>
             <td>{{ (user.count / totalSneezes) | percent }}</td>
+            <td>{{ user.spd | number }}</td>
           </tr>
         </tbody>
         <tfoot>
@@ -26,7 +28,8 @@
             <th></th>
             <th>{{ totalSneezes }}</th>
             <th>{{ totalCost | currency: 'USD' }}</th>
-            <th>{{ moneyPerPerson | currency: 'USD' }} per person</th>
+            <th>{{ moneyPerPerson | currency: 'USD' }} Per Person</th>
+            <th>{{ globalAverage | number }} Total Average</th>
           </tr>
         </tfoot>
       </table>

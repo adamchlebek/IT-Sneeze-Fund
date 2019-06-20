@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
   user: User;
   hide: boolean;
   counter: number = 0;
+  testing: boolean = false;
 
   curUser: User;
 
@@ -79,6 +80,12 @@ export class UsersComponent implements OnInit {
     this.createSneeze(user);
     this.changeService.updateUser(user);
     this.userApiServce.addSneeze(this.user);
+  }
+
+  testSneeze(user: User){
+    this.createSneeze(user);
+    this.changeService.updateUser(user);
+    this.userApiServce.testSneeze(this.user);
   }
 
   createSneeze(user: User){

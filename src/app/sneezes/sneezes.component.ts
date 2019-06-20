@@ -27,7 +27,7 @@ export class SneezesComponent implements OnInit {
 
   constructor(private userApiServce: UserAPIService, private modalService: BsModalService, private changeService: ChangeService) {
     this.changeService.getSneeze().subscribe(sneeze => {
-      this.sneezes.push(sneeze);
+      this.sneezes.unshift(sneeze);
     });
   }
 
@@ -41,7 +41,7 @@ export class SneezesComponent implements OnInit {
     });
 
     this.hide = true;
-    this.show = true;
+    this.show = false;
   }
 
   openModal(template: TemplateRef<any>, sneeze: Sneeze) {

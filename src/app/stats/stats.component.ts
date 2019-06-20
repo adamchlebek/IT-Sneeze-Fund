@@ -19,6 +19,9 @@ export class StatsComponent implements OnInit {
   moneyPerPerson: number;
   totalSneezes: number = 0;
 
+  totalAverage: number = 0;
+  globalAverage: number;
+
   count: number;
 
   constructor(private userApiServce: UserAPIService,
@@ -30,11 +33,15 @@ export class StatsComponent implements OnInit {
         this.totalSneezes = 0;
         this.totalCost = 0;
         this.moneyPerPerson = 0;
+        this.globalAverage = 0;
+        this.totalAverage = 0;
 
         this.users.forEach((user)=>{
           this.totalSneezes += user.count;
+          this.totalAverage += user.spd;
         });
 
+        this.globalAverage = this.totalAverage / this.users.length;
         this.totalCost = this.totalSneezes * 0.25;
         this.moneyPerPerson = this.totalCost/this.users.length;
       });
@@ -50,10 +57,18 @@ export class StatsComponent implements OnInit {
 
       this.users.forEach((user)=>{
         this.totalSneezes += user.count;
+        this.totalAverage += user.spd;
       });
 
+      this.globalAverage = this.totalAverage / this.users.length;
       this.totalCost = this.totalSneezes * 0.25;
       this.moneyPerPerson = this.totalCost/this.users.length;
     });
+  }
+
+  getUsers(){
+    this.userApiServce.getUsers().subscribe((data =>{
+      this.users = data;
+    }));
   }
 }

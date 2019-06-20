@@ -7,10 +7,12 @@
     <div class="card" style="width: 18rem; float: left; margin: 15px; text-align: center;">
       <div class="card-body">
         <h5 class="card-title">{{ person.name }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Current Count: {{ person.count }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Current Count: <strong>{{ person.count }}</strong></h6>
+        <h6 class="card-subtitle mb-2 text-muted">Date Joined: <strong>{{ person.joined | date: 'mediumDate'}}</strong></h6>
         <img src="{{person.image}}" class="card-img" />
         <br>
         <button type="button" (click)="openModal(template, person)" class="btn btn-light btn-circle btn-xl">🤧</button>
+        <button type="button" *ngIf="testing" (click)="testSneeze(person)" class="btn btn-light btn-circle btn-xl">Test</button>
       </div>
     </div>
   </div>
