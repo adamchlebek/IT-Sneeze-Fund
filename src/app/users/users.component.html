@@ -1,24 +1,57 @@
 <div class="card-body">
 
   <h2 class="card-title">All Users</h2>
+  <button (click)="toggle()" class="btn btn-outline-primary" style="width: 150px;">{{ oldVersion ? 'Show New Cards' : 'Show Old Cards' }}</button>
   <hr>
   <!-- This is where we do a for loop to get each of our person components -->
   <div *ngFor="let person of users">
-    <div class="card" style="width: 18rem; float: left; margin: 15px; text-align: center;">
-      <div class="card-body">
-        <h5 class="card-title">{{ person.name }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Current Count: <strong>{{ person.count }}</strong></h6>
-        <h6 class="card-subtitle mb-2 text-muted">Date Joined: <strong>{{ person.joined | date: 'mediumDate'}}</strong></h6>
-        <img src="{{person.image}}" class="card-img" />
-        <br>
-        <button type="button" (click)="openModal(template, person)" class="btn btn-light btn-circle btn-xl">🤧</button>
-        <button type="button" *ngIf="testing" (click)="testSneeze(person)" class="btn btn-light btn-circle btn-xl">Test</button>
-      </div>
+
+  <div *ngIf="oldVersion" class="card" style="width: 18rem; float: left; margin: 15px; text-align: center;">
+    <div class="card-body">
+      <h5 class="card-title">{{ person.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Current Count: <strong>{{ person.count }}</strong></h6>
+      <h6 class="card-subtitle mb-2 text-muted">Date Joined: <strong>{{ person.joined | date: 'mediumDate'}}</strong></h6>
+      <img src="{{person.image}}" class="card-img" />
+      <br>
+      <button type="button" (click)="openModal(template, person)" class="btn btn-light btn-circle btn-xl">🤧</button>
+      <button type="button" *ngIf="testing" (click)="testSneeze(person)" class="btn btn-light btn-circle btn-xl">Test</button>
     </div>
   </div>
 
+    <div *ngIf="!oldVersion" class="wrapper card" style="width: 20rem; float: left; margin: 20px; text-align: center;">
+        <div class="profile-card js-profile-card">
+          <div class="profile-card__img">
+            <img src="{{person.image}}" alt="profile card">
+          </div>
+
+          <div class="profile-card__cnt js-profile-cnt">
+            <div class="profile-card__name">{{ person.name }}</div>
+            <div class="profile-card__txt">Joined on <strong>{{ person.joined | date: 'mediumDate'}}</strong></div>
+
+            <div class="profile-card-inf">
+              <div class="profile-card-inf__item">
+                <div class="profile-card-inf__title">{{ person.count }}</div>
+                <div class="profile-card-inf__txt">Sneezes</div>
+              </div>
+            </div>
+            <div class="profile-card-ctr pointer">
+              <button class="profile-card__button button--blue js-message-btn pointer" (click)="openModal(template, person)">🤧</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </div>
+
+  <!-- Test Component -->
+
+
   <ng-template #template>
     <div class="modal-body text-center" id="confirmation">
+      <div class="modal-head">
+          <h4 class="modal-title">{{ user.name }}</h4>
+      </div>
       <p>{{ message }}</p>
       <p [hidden]="hide">Please Enter Code...</p>
       <input [hidden]="hide" id="code">
@@ -30,4 +63,6 @@
     </div>
   </ng-template>
 </div>
+
+
 

@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReleaseNotesComponent } from './release-notes/release-notes.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PieComponent,
     SpdComponent,
     SneezesComponent,
-    ReleaseNotesComponent
+    ReleaseNotesComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

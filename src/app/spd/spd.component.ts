@@ -26,7 +26,7 @@ export class SpdComponent implements OnInit {
   };
 
   chartData = [
-    { data: [], label: 'Sneezes' }
+    { data: [], label: 'Sneezes'}
   ];
 
   chartLabels = ['Saturday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sunday'];

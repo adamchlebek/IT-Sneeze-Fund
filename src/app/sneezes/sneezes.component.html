@@ -23,6 +23,9 @@
 
   <ng-template #template>
       <div class="modal-body text-center" id="confirmation">
+        <div class="modal-head">
+            <h4 class="modal-title">{{ sneeze.name }}</h4>
+        </div>
         <p>{{ message }}</p>
         <p [hidden]="hide">Please Enter Code...</p>
         <input [hidden]="hide" id="code">

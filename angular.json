@@ -119,5 +119,10 @@
       }
     }
   },
-  "defaultProject": "IT-Sneeze-Fund"
+  "defaultProject": "IT-Sneeze-Fund",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

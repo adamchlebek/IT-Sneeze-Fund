@@ -11,7 +11,7 @@ import { Sneeze } from '../sneeze';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.scss']
 })
 
 export class UsersComponent implements OnInit {
@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
   message: string;
   user: User;
   hide: boolean;
+  oldVersion: boolean;
   counter: number = 0;
   testing: boolean = false;
 
@@ -67,6 +68,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.hide = true;
+    this.oldVersion = false;
     this.userApiServce.getUsers().subscribe((data) => {
       this.users = data;
     });
@@ -95,5 +97,9 @@ export class UsersComponent implements OnInit {
     thisSneeze.date = new Date();
 
     this.changeService.addSneeze(thisSneeze);
+  }
+
+  toggle(){
+    this.oldVersion = !this.oldVersion;
   }
 }

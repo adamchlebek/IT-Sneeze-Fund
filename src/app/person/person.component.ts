@@ -1,23 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../user';
 
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  styleUrls: ['./person.component.scss']
 })
 export class PersonComponent implements OnInit {
-
-  @Input() name: string;
-  @Input() count: number;
-
-  personName: string;
-  personCount: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.personName = this.name;
-    this.personCount = this.count;
+
   }
 
 }
