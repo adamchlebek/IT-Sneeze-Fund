@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter, TemplateRef, HostListener } fr
 
 import { User } from './../user';
 import { Sneeze } from '../sneeze';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -23,6 +24,7 @@ export class UsersComponent implements OnInit {
   oldVersion: boolean;
   counter: number = 0;
   testing: boolean = false;
+  code: string;
 
   curUser: User;
 
@@ -53,7 +55,11 @@ export class UsersComponent implements OnInit {
   checkCode(user: User){
     document.getElementById("confirmation").classList.remove("shake");
 
-    if((<HTMLInputElement>document.getElementById("code")).value == "sneeze"){
+    this.userApiServce.getCode().subscribe(data => {
+      this.code = data;
+    });
+
+    if((<HTMLInputElement>document.getElementById("code")).value == this.code){
       this.addSneeze(user);
     }else{
       document.getElementById("confirmation").classList.add("shake");

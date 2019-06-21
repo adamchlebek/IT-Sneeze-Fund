@@ -4,4 +4,5 @@ export class User {
   image: string;
   joined: Date;
   spd: number;
+  balance: number;
 }

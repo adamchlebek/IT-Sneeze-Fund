@@ -26,6 +26,9 @@ export class KerchooComponent implements OnInit {
     this.modalRef = this.modalService.show(template, this.config);
   }
 
+  close(){
+    this.modalRef.hide();
+  }
 }
 
 

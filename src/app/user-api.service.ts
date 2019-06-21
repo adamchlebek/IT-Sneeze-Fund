@@ -12,6 +12,7 @@ import { stringify } from '@angular/compiler/src/util';
 export class UserAPIService {
   users: Observable<User[]>;
   sneezes: Observable<Sneeze[]>;
+  code: Observable<string>;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,6 +22,10 @@ export class UserAPIService {
 
   apiSneezes(){
     this.sneezes = this.httpClient.get<Sneeze[]>('https://sneezewebapi.azurewebsites.net/api/sneezes');
+  }
+
+  getCode(){
+    return this.code = this.httpClient.get<string>('https://sneezewebapi.azurewebsites.net/api/info/getcode');
   }
 
   getUsers(){
