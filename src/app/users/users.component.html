@@ -9,7 +9,7 @@
   <div *ngIf="oldVersion" class="card" style="width: 18rem; float: left; margin: 15px; text-align: center;">
     <div class="card-body">
       <h5 class="card-title">{{ person.name }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"><strong>{{ person.balance }}</strong></h6>
+      <h6 class="card-subtitle mb-2 text-muted"><strong>{{ person.balance }} <i class="fas fa-lira-sign"></i></strong></h6>
       <h6 class="card-subtitle mb-2 text-muted">Current Count: <strong>{{ person.count }}</strong></h6>
       <h6 class="card-subtitle mb-2 text-muted">Date Joined: <strong>{{ person.joined | date: 'mediumDate'}}</strong></h6>
       <img src="{{person.image}}" class="card-img" />
