@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "@ng-bootstrap/ng-bootstrap": "^4.2.1",
+    "angular-bootstrap-md": "^4.3.7",
+    "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.3.1",
     "canvasjs": "^1.8.1",
     "chart.js": "^2.8.0",

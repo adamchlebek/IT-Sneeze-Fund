@@ -18,8 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReleaseNotesComponent } from './release-notes/release-notes.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavComponent } from './nav/nav.component';
+import { KerchooComponent } from './kerchoo/kerchoo.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { NavComponent } from './nav/nav.component';
     SpdComponent,
     SneezesComponent,
     ReleaseNotesComponent,
-    NavComponent
+    KerchooComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,8 @@ import { NavComponent } from './nav/nav.component';
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
