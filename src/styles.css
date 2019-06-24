@@ -80,10 +80,20 @@ footer{
 }
 
 .header{
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
+  color: transparent;
+}
+
+.header-default{
   color: rgb(0, 145, 140);
 }
 
 .card-title{
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
+  color: transparent;
+}
+
+.card-title-default{
   color: rgb(0, 145, 140);
 }
 
@@ -110,4 +120,9 @@ footer{
   border-color: #81C9C6;
   color: white;
   background-color: rgb(0, 77, 74);
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
+  color: transparent;
 }
