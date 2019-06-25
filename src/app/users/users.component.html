@@ -9,7 +9,7 @@
   <div *ngIf="oldVersion" class="card" style="width: 18rem; float: left; margin: 15px; text-align: center;">
     <div class="card-body">
       <h5 class="card-title">{{ person.name }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"><strong>{{ person.balance }} <i class="fas fa-lira-sign"></i></strong></h6>
+      <!-- <h6 class="card-subtitle mb-2 text-muted"><strong>{{ person.balance }} <i class="fas fa-lira-sign"></i></strong></h6> -->
       <h6 class="card-subtitle mb-2 text-muted">Current Count: <strong>{{ person.count }}</strong></h6>
       <h6 class="card-subtitle mb-2 text-muted">Date Joined: <strong>{{ person.joined | date: 'mediumDate'}}</strong></h6>
       <img src="{{person.image}}" class="card-img" />
@@ -27,7 +27,7 @@
 
           <div class="profile-card__cnt js-profile-cnt">
             <div class="profile-card__name">{{ person.name }}</div>
-            <div class="profile-card__txt">{{ person.balance }} <i class="fas fa-lira-sign"></i></div>
+            <!-- <div class="profile-card__txt">{{ person.balance }} <i class="fas fa-lira-sign"></i></div> -->
             <div class="profile-card__txt">Joined on <strong>{{ person.joined | date: 'mediumDate'}}</strong></div>
 
             <div class="profile-card-inf">
@@ -38,6 +38,7 @@
             </div>
             <div class="profile-card-ctr pointer">
               <button class="profile-card__button button--blue js-message-btn pointer" (click)="openModal(template, person)">🤧</button>
+              <button type="button" *ngIf="testing" (click)="testSneeze(person)" class="btn btn-light btn-circle btn-xl">Test</button>
             </div>
           </div>
         </div>
@@ -57,11 +58,13 @@
       <p>{{ message }}</p>
       <p [hidden]="hide">Please Enter Code...</p>
       <input [hidden]="hide" id="code">
+      <span [hidden]="!generated"><strong>x{{ multiplier }}</strong></span>
       <br>
-      <button [hidden]="!hide" type="button" class="btn btn-light padding" (click)="confirm()">✔️</button>
-      <button [hidden]="!hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
-      <button [hidden]="hide" type="button" class="btn btn-light padding" (click)="checkCode(user)">📇</button>
-      <button [hidden]="hide" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
+      <button [hidden]="!hide || generated" type="button" class="btn btn-light padding" (click)="confirm()">✔️</button>
+      <button [hidden]="!hide || generated" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
+      <button [hidden]="hide || generated" type="button" class="btn btn-light padding" (click)="checkCode(user)">📇</button>
+      <button [hidden]="hide || generated" type="button" class="btn btn-primary padding" (click)="decline()">❌</button>
+      <button [hidden]="!generated" type="button" class="btn btn-light padding" (click)="decline()">🙆‍</button>
     </div>
   </ng-template>
 </div>

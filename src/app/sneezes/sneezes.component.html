@@ -10,12 +10,14 @@
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Date</th>
+        <th scope="col">Multiplier</th>
       </tr>
       </thead>
       <tbody>
         <tr *ngFor="let sneeze of sneezes">
           <th>{{ sneeze.name }}</th>
           <td>{{ sneeze.date | date:'EEEE, dd MMMM hh:mm a' }}</td>
+          <td>x{{ sneeze.multiplier }}</td>
           <td><button type="button" (click)="openModal(template, sneeze)" class="btn btn-light" style="float: right;">🗑️</button></td>
         </tr>
       </tbody>

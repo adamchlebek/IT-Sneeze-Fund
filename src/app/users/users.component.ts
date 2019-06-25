@@ -23,8 +23,13 @@ export class UsersComponent implements OnInit {
   hide: boolean;
   oldVersion: boolean;
   counter: number = 0;
-  testing: boolean = false;
   code: string;
+  multiplier: number;
+  generated: boolean = false;
+
+  //-----------//
+  testing: boolean = false;
+  //----------//
 
   curUser: User;
 
@@ -57,19 +62,20 @@ export class UsersComponent implements OnInit {
 
     this.userApiServce.getCode().subscribe(data => {
       this.code = data;
-    });
 
-    if((<HTMLInputElement>document.getElementById("code")).value == this.code){
-      this.addSneeze(user);
-    }else{
-      document.getElementById("confirmation").classList.add("shake");
-      document.getElementById("code").classList.add("error");
-    }
+      if((<HTMLInputElement>document.getElementById("code")).value == this.code){
+        this.getMultiplier(user);
+      }else{
+        document.getElementById("confirmation").classList.add("shake");
+        document.getElementById("code").classList.add("error");
+      }
+    });
   }
 
   decline(): void {
     this.modalRef.hide();
     this.hide = true;
+    this.generated = false;
   }
 
   ngOnInit() {
@@ -80,20 +86,49 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  addSneeze(user: User) {
-    //this.changeService.toggle();
-    this.modalRef.hide();
+  getMultiplier(user: User){
+    //Set Multiplier Value
+    let multiplier: number = 1;
+    this.message = "Your multiplier is...";
     this.hide = true;
+    this.generated = true;
+
+    let rnd: number = Math.floor((Math.random() * 100) + 1);
+
+    switch(true){
+      case (rnd < 6):
+        this.multiplier = .25;
+        break;
+      case (rnd < 26):
+        this.multiplier = .5;
+        break;
+      case (rnd < 76):
+        this.multiplier = 1;
+        break;
+      case (rnd < 96):
+        this.multiplier = 2;
+        break;
+      default:
+        this.multiplier = 4;
+        break;
+    }
+
+    //this.generated = false;
+    this.addSneeze(user, 1);
+  }
+
+  addSneeze(user: User, multiplier: number) {
+    //this.changeService.toggle();
     //You have added a sneeze!
     this.createSneeze(user);
     this.changeService.updateUser(user);
-    this.userApiServce.addSneeze(this.user);
+    this.userApiServce.addSneeze(this.user, multiplier);
   }
 
   testSneeze(user: User){
     this.createSneeze(user);
     this.changeService.updateUser(user);
-    this.userApiServce.testSneeze(this.user);
+    this.userApiServce.testSneeze(user);
   }
 
   createSneeze(user: User){
