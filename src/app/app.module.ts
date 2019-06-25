@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { KerchooComponent } from './kerchoo/kerchoo.component';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { GraphsComponent } from './graphs/graphs.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     SpdComponent,
     SneezesComponent,
     ReleaseNotesComponent,
-    KerchooComponent
+    KerchooComponent,
+    GraphsComponent
   ],
   imports: [
     BrowserModule,
