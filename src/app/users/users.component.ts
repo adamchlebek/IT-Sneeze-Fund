@@ -114,7 +114,7 @@ export class UsersComponent implements OnInit {
     }
 
     //this.generated = false;
-    this.addSneeze(user, 1);
+    this.addSneeze(user, this.multiplier);
   }
 
   addSneeze(user: User, multiplier: number) {
