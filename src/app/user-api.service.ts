@@ -39,7 +39,7 @@ export class UserAPIService {
   addSneeze(user: User, multiplier: number){
     user.count += 1;
 
-    let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name + '/' + multiplier;
+    let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name + '/' + multiplier*100;
 
     return this.httpClient.post(url, '').subscribe((val) => {
       console.log("Success!", val);
