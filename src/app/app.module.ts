@@ -22,6 +22,7 @@ import { KerchooComponent } from './kerchoo/kerchoo.component';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { GraphsComponent } from './graphs/graphs.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { GraphsComponent } from './graphs/graphs.component';
     SneezesComponent,
     ReleaseNotesComponent,
     KerchooComponent,
-    GraphsComponent
+    GraphsComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
