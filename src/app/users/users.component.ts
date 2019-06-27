@@ -96,16 +96,16 @@ export class UsersComponent implements OnInit {
     let rnd: number = Math.floor((Math.random() * 100) + 1);
 
     switch(true){
-      case (rnd < 6):
+      case (rnd < 10):
         this.multiplier = .25;
         break;
-      case (rnd < 26):
+      case (rnd < 33):
         this.multiplier = .5;
         break;
       case (rnd < 76):
         this.multiplier = 1;
         break;
-      case (rnd < 96):
+      case (rnd < 91):
         this.multiplier = 2;
         break;
       default:
