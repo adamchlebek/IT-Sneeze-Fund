@@ -36,6 +36,10 @@ export class UserAPIService {
     return this.sneezes;
   }
 
+  getSneezesUser(user: User){
+    return this.httpClient.get<Sneeze[]>('https://sneezewebapi.azurewebsites.net/api/sneezes/' + user.name);
+  }
+
   addSneeze(user: User, multiplier: number){
     user.count += 1;
 
