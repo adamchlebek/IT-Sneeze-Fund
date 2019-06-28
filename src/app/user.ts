@@ -5,4 +5,5 @@ export class User {
   joined: Date;
   spd: number;
   balance: number;
+  lastSneeze: Date;
 }

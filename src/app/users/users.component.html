@@ -51,6 +51,8 @@
               <button class="profile-card__button button--blue js-message-btn pointer" (click)="openModal(template, person)">🤧</button>
               <button type="button" *ngIf="testing" (click)="testSneeze(person)" class="btn btn-light btn-circle btn-xl">Test</button>
             </div>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted">Last Sneeze: <strong>{{ person.lastSneeze | date: 'mediumDate'}}</strong></h6>
           </div>
         </div>
       </div>

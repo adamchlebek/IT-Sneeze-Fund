@@ -41,7 +41,8 @@ export class UserAPIService {
   }
 
   addSneeze(user: User, multiplier: number){
-    user.count += 1;
+    user.count += multiplier;
+    user.lastSneeze = new Date();
 
     let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name + '/' + multiplier*100;
 
