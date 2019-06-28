@@ -21,10 +21,6 @@ export class AppComponent {
     this.userAPI.apiSneezes();
   }
 
-  displayCounter(count){
-    console.log(count);
-  }
-
   childEventClicked(user: User){
     this.clickedEvent = user;
   }

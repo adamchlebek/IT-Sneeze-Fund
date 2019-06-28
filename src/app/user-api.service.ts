@@ -46,13 +46,13 @@ export class UserAPIService {
     let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name + '/' + multiplier*100;
 
     return this.httpClient.post(url, '').subscribe((val) => {
-      console.log("Success!", val);
+      //console.log("Success!", val);
     },
     response => {
-      console.log("Error!", response);
+      //console.log("Error!", response);
     },
     () => {
-      console.log("Complete!");
+      //console.log("Complete!");
     });
   }
 
@@ -62,13 +62,13 @@ export class UserAPIService {
     //let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/NewSneeze/' + user.name;
 
     return this.httpClient.post('', '').subscribe((val) => {
-      console.log("Success!", val);
+      //console.log("Success!", val);
     },
     response => {
-      console.log("Error!", response);
+      //console.log("Error!", response);
     },
     () => {
-      console.log("Complete!");
+      //console.log("Complete!");
     });
   }
 
@@ -76,13 +76,13 @@ export class UserAPIService {
     let url = 'https://sneezewebapi.azurewebsites.net/api/sneezes/DelSneeze/?date=' + sneeze.date + '&name=' + sneeze.name;
 
     return this.httpClient.get(url).subscribe((val) => {
-      console.log("Success!", val);
+      //console.log("Success!", val);
     },
     response => {
-      console.log("Error!", response);
+      //console.log("Error!", response);
     },
     () => {
-      console.log("Complete!");
+      //console.log("Complete!");
     });
   }
 

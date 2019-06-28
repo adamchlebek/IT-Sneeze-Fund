@@ -45,3 +45,4 @@ cpanel.yml
 # System Files
 .DS_Store
 Thumbs.db
+*.report.html
