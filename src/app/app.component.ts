@@ -11,7 +11,7 @@ import { User } from './user';
 export class AppComponent {
   title = 'IT Sneeze Fund';
   public clickedEvent: User;
-  text: boolean = false;
+  text: boolean = true;
 
   constructor(private userAPI: UserAPIService){
   }
