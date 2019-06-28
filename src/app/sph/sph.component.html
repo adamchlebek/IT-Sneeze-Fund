@@ -1,18 +1,16 @@
 <div class="card centerCard" style="width: 90%">
     <div class="card-body">
-        <h4 class="card-title">Sneezes Per Day</h4>
+        <h4 class="card-title">Sneezes Per Hour</h4>
         <hr>
 
         <div style="width: 90%; height: auto;">
           <canvas
-              id="sph"
               baseChart
               [chartType]="'horizontalBar'"
               [datasets]="chartData"
               [labels]="chartLabels"
               [options]="chartOptions"
-              [legend]="true"
-              (click)="getBar()">
+              [legend]="true">
           </canvas>
         </div>
 

@@ -11,6 +11,7 @@ import { User } from './user';
 export class AppComponent {
   title = 'IT Sneeze Fund';
   public clickedEvent: User;
+  text: boolean = false;
 
   constructor(private userAPI: UserAPIService){
   }
@@ -26,5 +27,9 @@ export class AppComponent {
 
   childEventClicked(user: User){
     this.clickedEvent = user;
+  }
+
+  toggle(){
+    this.text = !this.text;
   }
 }

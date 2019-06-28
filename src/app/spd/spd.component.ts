@@ -164,4 +164,7 @@ export class SpdComponent implements OnInit {
     })
   }
 
+  getBar(){
+    alert(event);
+  }
 }

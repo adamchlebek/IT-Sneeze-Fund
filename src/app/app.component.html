@@ -1,9 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1 style="padding: 15px;" class="display-4 header">
+  <img [hidden]="text" src="../assets/banner.png" width="100%" style="padding-bottom: 20px;"/>
+  <h1 [hidden]="!text" style="padding: 15px;" class="display-4 header">
     Welcome to {{ title }}!
   </h1>
-  <app-kerchoo></app-kerchoo>
+
+  <button class="btn btn-outline-primary" (click)="toggle()" style="width: 200px;">{{ text ? 'Make Me Overwhelmed' : 'I am Overwhelmed' }}</button>
   <hr>
 </div>
 
