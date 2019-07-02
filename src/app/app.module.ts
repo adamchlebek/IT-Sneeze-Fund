@@ -24,6 +24,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { GraphsComponent } from './graphs/graphs.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SphComponent } from './sph/sph.component';
+import { SneezePollenGraphComponent } from './sneeze-pollen-graph/sneeze-pollen-graph.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SphComponent } from './sph/sph.component';
     KerchooComponent,
     GraphsComponent,
     SpinnerComponent,
-    SphComponent
+    SphComponent,
+    SneezePollenGraphComponent
   ],
   imports: [
     BrowserModule,

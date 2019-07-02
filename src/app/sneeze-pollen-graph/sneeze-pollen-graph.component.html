@@ -1,0 +1,31 @@
+<div class="card centerCard" style="width: 90%">
+  <div class="card-body">
+      <h4 class="card-title">Sneezes Per Hour</h4>
+      <hr>
+
+      <div style="width: 90%; height: auto;">
+        <canvas
+            baseChart
+            [chartType]="'horizontalBar'"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [legend]="true">
+        </canvas>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ selectedUser ? selectedUser.name : 'All Users' }}</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button (click)="changeUser(null)" ngbDropdownItem>All Users</button>
+              <hr>
+              <button (click)="changeUser(user)" *ngFor="let user of users" ngbDropdownItem>
+                {{ user.name }}
+              </button>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
