@@ -5,6 +5,7 @@ import { User } from './user';
 import { Observable } from 'rxjs';
 import { Sneeze } from './sneeze';
 import { stringify } from '@angular/compiler/src/util';
+import { Pollen } from './pollen';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { stringify } from '@angular/compiler/src/util';
 export class UserAPIService {
   users: Observable<User[]>;
   sneezes: Observable<Sneeze[]>;
+  pollen: Observable<Pollen[]>;
   code: Observable<string>;
 
   constructor(private httpClient: HttpClient) { }
@@ -24,6 +26,10 @@ export class UserAPIService {
     this.sneezes = this.httpClient.get<Sneeze[]>('https://sneezewebapi.azurewebsites.net/api/sneezes');
   }
 
+  apiPollen(){
+    this.pollen = this.httpClient.get<Pollen[]>('https://sneezewebapi.azurewebsites.net/api/sneezes');
+  }
+
   getCode(){
     return this.code = this.httpClient.get<string>('https://sneezewebapi.azurewebsites.net/api/info/getcode');
   }
@@ -34,6 +40,10 @@ export class UserAPIService {
 
   getSneezes(){
     return this.sneezes;
+  }
+
+  getPollen(){
+    return this.pollen;
   }
 
   getSneezesUser(user: User){

@@ -17,6 +17,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.userAPI.apiPollen();
     this.userAPI.apiUsers();
     this.userAPI.apiSneezes();
   }

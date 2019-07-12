@@ -3,6 +3,7 @@ import { Sneeze } from '../sneeze';
 import { User } from '../user';
 import { UserAPIService } from '../user-api.service';
 import { ChangeService } from '../change.service';
+import { Pollen } from '../pollen';
 
 @Component({
   selector: 'app-sneeze-pollen-graph',
@@ -10,29 +11,25 @@ import { ChangeService } from '../change.service';
   styleUrls: ['./sneeze-pollen-graph.component.scss']
 })
 export class SneezePollenGraphComponent implements OnInit {
+  dateCount: Map<Date, number> = new Map<Date, number>();
+  pollenToDate: Map<Date, number>;
+
   sneezes: Sneeze[];
   users: User[];
+  pollen: Pollen[];
 
   selectedUser: User;
-
-  am79: number = 0;
-  am911: number = 0;
-  am111: number = 0;
-  pm13: number = 0;
-  pm35: number = 0;
-  pm57: number = 0;
-  pm79: number = 0;
-  other: number = 0;
 
   chartOptions = {
     responsive: true
   };
 
   chartData = [
-    { data: [], label: 'Sneezes'}
+    { data: [10, 20, 30, 50], label: 'Sneezes'},
+    { data: [5.4, 15, 3.2, 15], label: 'Pollen', type: 'line'}
   ];
 
-  chartLabels = ['7am-9am', '9am-11am', '11am-1pm', '1pm-3pm', '3pm-5pm', '5pm-7pm' , '7pm-9pm', 'No Time Documented'];
+  chartLabels = ['1', '2', '3', '4',];
 
   constructor(private userApiServce: UserAPIService, private changeService: ChangeService) {
     this.changeService.getSneeze().subscribe(sneeze => {
@@ -41,148 +38,33 @@ export class SneezePollenGraphComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userApiServce.getUsers().subscribe((data) => {
-      this.users = data;
-    });
-
     this.userApiServce.getSneezes().subscribe((data) => {
       this.sneezes = data;
-
-      data.forEach((sneeze) => {
-        var date = new Date(sneeze.date.toString());
-        let hours: number = date.getHours();
-
-        switch(true){
-          case hours >= 19:
-            this.pm79 += 1;
-            break;
-          case hours >= 17:
-            this.pm57 += 1;
-            break;
-          case hours >= 15:
-            this.pm35 += 1;
-            break;
-          case hours >= 13:
-            this.pm13 += 1;
-            break;
-          case hours >= 11:
-            this.am111 += 1;
-            break;
-          case hours >= 9:
-            this.am911 += 1;
-            break;
-          case hours >= 7:
-            this.am79 += 1;
-            break;
-          case hours >= 0:
-            this.other += 1;
-            break;
-          default:
-            break;
-        }
-
-        this.chartData[0].data = [this.am79, this.am911, this.am111, this.pm13, this.pm35, this.pm57, this.pm79, this.other]
+      this.userApiServce.getPollen().subscribe((data) => {
+        this.pollen = data;
+        this.fillDict();
       });
     });
   }
 
-  changeUser(user: User){
-    if (user == null){
-      this.changeGraphAllUsers();
-      this.selectedUser = null;
-    }else{
-      this.selectedUser = user;
-      this.changeGraph(user);
-    }
-  }
+  fillDict(){
+    this.sneezes.forEach(element => {
+      var month = element.date.getMonth;
+      var date = element.date.getDate;
+      var year = element.date.getUTCFullYear;
 
-  changeGraphAllUsers(){
-    let data = this.sneezes;
+      let newDate = year + "/" + month + "/" + date;
 
-    data.forEach((sneeze) => {
-      var date = new Date(sneeze.date.toString());
-      let hours: number = date.getHours();
+      let thisdate = new Date("2008/10/28");
 
-      switch(true){
-        case hours >= 19:
-          this.pm79 += 1;
-          break;
-        case hours >= 17:
-          this.pm57 += 1;
-          break;
-        case hours >= 15:
-          this.pm35 += 1;
-          break;
-        case hours >= 13:
-          this.pm13 += 1;
-          break;
-        case hours >= 11:
-          this.am111 += 1;
-          break;
-        case hours >= 9:
-          this.am911 += 1;
-          break;
-        case hours >= 7:
-          this.am79 += 1;
-          break;
-        case hours >= 0:
-          this.other += 1;
-          break;
-        default:
-          break;
+      if (this.dateCount.has(thisdate)){
+        var val = this.dateCount.get(thisdate);
+        this.dateCount.set(thisdate, val + 1);
+      }else{
+        this.dateCount.set(thisdate, 1);
       }
-
-      this.chartData[0].data = [this.am79, this.am911, this.am111, this.pm13, this.pm35, this.pm57, this.pm79, this.other]
     });
-  }
 
-  changeGraph(user: User){
-    this.am79 = 0;
-    this.am911 = 0;
-    this.am111 = 0;
-    this.pm13 = 0;
-    this.pm35 = 0;
-    this.pm57 = 0;
-    this.pm79 = 0;
-    this.other = 0;
-
-    this.userApiServce.getSneezesUser(user).subscribe((data) => {
-
-      data.forEach((sneeze) => {
-        var date = new Date(sneeze.date.toString());
-        let hours: number = date.getHours();
-
-        switch(true){
-          case hours >= 19:
-            this.pm79 += 1;
-            break;
-          case hours >= 17:
-            this.pm57 += 1;
-            break;
-          case hours >= 15:
-            this.pm35 += 1;
-            break;
-          case hours >= 13:
-            this.pm13 += 1;
-            break;
-          case hours >= 11:
-            this.am111 += 1;
-            break;
-          case hours >= 9:
-            this.am911 += 1;
-            break;
-          case hours >= 7:
-            this.am79 += 1;
-            break;
-          case hours >= 0:
-            this.other += 1;
-            break;
-          default:
-            break;
-        }
-
-        this.chartData[0].data = [this.am79, this.am911, this.am111, this.pm13, this.pm35, this.pm57, this.pm79, this.other]
-      });
-    })
+    console.log(this.dateCount);
   }
 }
