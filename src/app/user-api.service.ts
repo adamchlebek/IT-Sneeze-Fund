@@ -27,7 +27,7 @@ export class UserAPIService {
   }
 
   apiPollen(){
-    this.pollen = this.httpClient.get<Pollen[]>('https://sneezewebapi.azurewebsites.net/api/sneezes');
+    this.pollen = this.httpClient.get<Pollen[]>('https://sneezewebapi.azurewebsites.net/api/pollen/all');
   }
 
   getCode(){

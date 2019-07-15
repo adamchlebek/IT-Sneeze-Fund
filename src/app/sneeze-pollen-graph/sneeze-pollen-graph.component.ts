@@ -11,7 +11,7 @@ import { Pollen } from '../pollen';
   styleUrls: ['./sneeze-pollen-graph.component.scss']
 })
 export class SneezePollenGraphComponent implements OnInit {
-  dateCount: Map<Date, number> = new Map<Date, number>();
+  dateCount: Map<string, number> = new Map<string, number>();
   pollenToDate: Map<Date, number>;
 
   sneezes: Sneeze[];
@@ -25,11 +25,11 @@ export class SneezePollenGraphComponent implements OnInit {
   };
 
   chartData = [
-    { data: [10, 20, 30, 50], label: 'Sneezes'},
-    { data: [5.4, 15, 3.2, 15], label: 'Pollen', type: 'line'}
+    { data: [], label: 'Sneezes'},
+    { data: [], label: 'Pollen', type: 'line'}
   ];
 
-  chartLabels = ['1', '2', '3', '4',];
+  chartLabels = [];
 
   constructor(private userApiServce: UserAPIService, private changeService: ChangeService) {
     this.changeService.getSneeze().subscribe(sneeze => {
@@ -48,23 +48,29 @@ export class SneezePollenGraphComponent implements OnInit {
   }
 
   fillDict(){
-    this.sneezes.forEach(element => {
-      var month = element.date.getMonth;
-      var date = element.date.getDate;
-      var year = element.date.getUTCFullYear;
+    this.pollen.forEach(element => {
+      let el = new Date(element.date);
+      let elMon = el.getMonth() + 1;
+      let elementDate = elMon + '/' + el.getDate().toString() + '/' +  el.getFullYear().toString();
+      this.dateCount.set(elementDate.toString(), 0);
 
-      let newDate = year + "/" + month + "/" + date;
+      this.sneezes.forEach(sneeze => {
+        let sn = new Date(sneeze.date);
+        let snMon = sn.getMonth() + 1;
+        let sneezeDate = snMon + '/' + sn.getDate().toString() + '/' +  sn.getFullYear().toString();
+        if (elementDate === sneezeDate){
+          let val = this.dateCount.get(elementDate);
+          this.dateCount.set(elementDate, val + 1);
+        }
+      });
 
-      let thisdate = new Date("2008/10/28");
-
-      if (this.dateCount.has(thisdate)){
-        var val = this.dateCount.get(thisdate);
-        this.dateCount.set(thisdate, val + 1);
-      }else{
-        this.dateCount.set(thisdate, 1);
-      }
+      this.chartData[1].data.push(element.index);
     });
 
-    console.log(this.dateCount);
+    for(let item of Array.from(this.dateCount)){
+      this.chartLabels.push(item[0]);
+      this.chartData[0].data.push(item[1]);
+    }
+
   }
 }
