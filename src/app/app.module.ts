@@ -25,6 +25,7 @@ import { GraphsComponent } from './graphs/graphs.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SphComponent } from './sph/sph.component';
 import { SneezePollenGraphComponent } from './sneeze-pollen-graph/sneeze-pollen-graph.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SneezePollenGraphComponent } from './sneeze-pollen-graph/sneeze-pollen-
     GraphsComponent,
     SpinnerComponent,
     SphComponent,
-    SneezePollenGraphComponent
+    SneezePollenGraphComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
