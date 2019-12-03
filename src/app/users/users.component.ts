@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   hide: boolean;
   oldVersion: boolean;
   counter: number = 0;
-  code: string;
+  code: string = '5n33z3';
   multiplier: number;
   generated: boolean = false;
 
@@ -60,16 +60,12 @@ export class UsersComponent implements OnInit {
   checkCode(user: User){
     document.getElementById("confirmation").classList.remove("shake");
 
-    this.userApiServce.getCode().subscribe(data => {
-      this.code = data;
-
-      if((<HTMLInputElement>document.getElementById("code")).value == this.code){
-        this.getMultiplier(user);
-      }else{
-        document.getElementById("confirmation").classList.add("shake");
-        document.getElementById("code").classList.add("error");
-      }
-    });
+    if((<HTMLInputElement>document.getElementById("code")).value == this.code){
+      this.getMultiplier(user);
+    }else{
+      document.getElementById("confirmation").classList.add("shake");
+      document.getElementById("code").classList.add("error");
+    }
   }
 
   decline(): void {
@@ -114,7 +110,7 @@ export class UsersComponent implements OnInit {
     }
 
     //this.generated = false;
-    this.addSneeze(user, this.multiplier);
+    //this.addSneeze(user, this.multiplier);
   }
 
   addSneeze(user: User, multiplier: number) {
@@ -128,7 +124,6 @@ export class UsersComponent implements OnInit {
   testSneeze(user: User){
     this.createSneeze(user);
     this.changeService.updateUser(user);
-    this.userApiServce.testSneeze(user);
   }
 
   createSneeze(user: User){
@@ -137,7 +132,7 @@ export class UsersComponent implements OnInit {
     thisSneeze.name = user.name;
     thisSneeze.date = new Date();
 
-    this.changeService.addSneeze(thisSneeze);
+    //this.changeService.addSneeze(thisSneeze);
   }
 
   toggle(){
